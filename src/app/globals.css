@@ -58,7 +58,7 @@ h1 {
   right: 0;
   bottom: 0;
   z-index: 1 !important;
-  background: rgba(0, 0, 0, .6);
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .main-container {
@@ -66,17 +66,63 @@ h1 {
   z-index: 1 !important;
 }
 
-
 /****************/
 
-select, input {
-  background: rgba(0, 0, 0, .5);
+select,
+input {
+  background: rgba(0, 0, 0, 0.5);
 }
 
-.btnTjakep{
+.btnTjakep {
   /* border-radius: 30px; */
 }
 
-.tags-container > span{
+.tags-container > span {
   cursor: pointer;
+}
+
+.test {
+  max-height: 100vh;
+}
+
+.ghost {
+  display: inline-block;
+  color: tomato;
+  /* transform: scale(1.8), translateY(0,0); */
+  padding: 0 10px;
+}
+
+.subtitle {
+  /* background: rgba(255, 99, 71, 1); */
+  padding: 10px;
+  border: 2px solid tomato;
+  border-radius: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.animated-box {
+  /* box-shadow: 0 4px 6px -1px purple; */
+  /* box-shadow: 4 0px 6px -1px purple; */
+  /* box-shadow: 0 -4px 6px -1px purple; */
+  /* box-shadow: -4px 0 6px -1px purple; */
+  animation: animateBoxShadow 2s infinite ease-in-out;
+}
+
+@keyframes animateBoxShadow {
+  0% {
+    box-shadow: 0 4px 6px -1px purple;
+  }
+  25% {
+    box-shadow: 4px 0px 6px -1px purple;
+  }
+  50% {
+    box-shadow: 0 -4px 6px -1px purple;
+  }
+  75% {
+    box-shadow: -4px 0 6px -1px purple;
+  }
+  100% {
+    box-shadow: 0 4px 6px -1px purple;
+  }
 }

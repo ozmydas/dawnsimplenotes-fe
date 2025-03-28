@@ -1,5 +1,6 @@
-import { CircleCheck } from "lucide-react";
+'use client'
 
+import { CircleCheck } from "lucide-react";
 
 export default function TagsBar() {
     return <div className="flex flex-wrap justify-center gap-2 p-4 rounded-lg my-5 lg:mx-40 tags-container">

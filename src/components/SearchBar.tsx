@@ -1,3 +1,5 @@
+'use client'
+
 export default function SearchBar() {
     return <div
         className="flex flex-col md:flex-row items-center justify-center gap-4 p-4 lg:mx-40"
@@ -21,13 +23,13 @@ export default function SearchBar() {
         </select>
 
         {/* Date Range Input */}
-        <input
+        {/* <input
             type="date"
             className="border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500"
-        />
+        /> */}
 
-        <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 px-15 px-6 shadow-lg transition-all duration-300 cursor-pointer rounded-2xl">
-            🔍 Submit
+        <button className="bg-[tomato] hover:bg-orange-600 text-white font-semibold py-3 px-8 shadow-lg transition-all duration-300 cursor-pointer rounded-2xl text-xl">
+            🕵️ Look Up
         </button>
 
     </div>
