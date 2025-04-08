@@ -12,11 +12,16 @@
     "@tiptap/pm": "^2.11.6",
     "@tiptap/react": "^2.11.6",
     "@tiptap/starter-kit": "^2.11.6",
+    "argon2": "^0.41.1",
+    "axios": "^1.8.4",
+    "dayjs": "^1.11.13",
     "lucide-react": "^0.485.0",
     "motion": "^12.6.2",
     "next": "15.2.4",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "sweetalert2": "^11.17.2",
+    "sweetalert2-react-content": "^5.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
