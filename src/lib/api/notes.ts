@@ -1,26 +1,27 @@
-// "use server"
+"use client"
 
 import { MyNote } from "@/types/my_note";
 import axios from "axios";
 import dayjs from "dayjs";
 import { redirect } from "next/navigation";
 import Swal from "sweetalert2";
+import default_auth_header from "../fusion";
+import { useBearStore } from "@/store/bear";
 
-export async function save(note: MyNote, token: string) {
+
+const bearState = useBearStore.getState();
+
+export async function save(note: MyNote) {
 
     console.log("💡", process.env.APP_KEY)
 
-    let tgl = dayjs(new Date()).format("YYYY-MM-DD").toString()
     let url = process.env.NEXT_PUBLIC_API_URL ?? ""
+    let token = bearState.token;
 
     console.log("🚀 sending post", process.env.NEXT_PUBLIC_API_URL, note, dayjs(new Date()))
 
     axios.post(url + "/notes", note, {
-        headers: {
-            'z-uuid': '0000',
-            'z-date': tgl,
-            'z-token': token.replace("$argon2id$v=19$m=1024,t=2,p=1", ""),
-        }
+        headers: default_auth_header("0000", token)
     })
         .then(function (response) {
             console.log("⚡", response);
@@ -37,4 +38,22 @@ export async function save(note: MyNote, token: string) {
             console.log(error);
             Swal.fire('Oops!', 'Something went wrong.', 'error');
         });
-}
+} // end func
+
+
+export async function apiNoteGetAll() {
+    try {
+        const url = process.env.NEXT_PUBLIC_API_URL ?? ''
+        const token = bearState.token
+
+        const response = await axios.get(url + '/notes', {
+            headers: default_auth_header('0000', token),
+        })
+
+        return response.data.data
+    } catch (error) {
+        console.error(error)
+        Swal.fire('Oops!', 'Something went wrong.', 'error')
+        return null // or throw error if you want to handle it outside
+    }
+} // end func

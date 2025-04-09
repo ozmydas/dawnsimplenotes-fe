@@ -1,6 +1,14 @@
+import { MyNote } from "@/types/my_note";
 import { Copy, FileDown, Pin, QrCode, Share2 } from "lucide-react";
 
-export default function NoteItem() {
+export default function NoteItem({item} : {item: MyNote}) {
+
+    /// referensi : https://react.dev/reference/react-dom/components/common#dangerously-setting-the-inner-html
+    function renderHTMLToHTML(renderedHTML: any) {
+        return {__html: renderedHTML};
+      }
+
+
     return <div className="w-full bg-gray-950 opacity-80 rounded-2xl shadow-md hover:shadow-[tomato] p-6 border border-gray-600 mb-10">
         <div className="flex justify-between">
             <div className="">📆 1 April 2025, 20:20 AM</div>
@@ -25,9 +33,10 @@ export default function NoteItem() {
         </div>
         <hr className="my-5 border-t border-gray-500 opacity-50" />
         <div className="cursor-pointer">
-            <h2 className="text-xl font-bold text-white"><span>📄</span> Demo Title</h2>
+            <h2 className="text-xl font-bold text-white"><span>📄</span> {item.title}</h2>
             <p className="text-gray-400 mt-4 border-l-3 border-l-[tomato] pl-3 ml-3">
-                This is a demo paragraph about demo notes. It serves as a placeholder text to illustrate content structure and formatting. Some features may not work as expected, and certain functionalities might be limited or under development.
+                {/* {item.content} */}
+                <div dangerouslySetInnerHTML={renderHTMLToHTML(item.content)}></div>
             </p>
         </div>
         <div className="mt-8 flex gap-3">
