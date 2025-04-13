@@ -7,6 +7,7 @@ import Tiptaptoolbar from "../../components/Tiptaptoolbar";
 import Tiptap from "../../components/Tiptap";
 import { useState } from "react";
 import { save } from "@/lib/api/notes";
+import SelectFolder from "./SelectFolder";
 
 
 export default function NoteFormCreate() {
@@ -17,6 +18,7 @@ export default function NoteFormCreate() {
     const [formData, setFormData] = useState({
         title: "Your First Title",
         content: "<p>Hello World! 🌎️💨</p>",
+        path_code: "",
     })
 
     const handleInput = (e: { target: { name: any; value: any; }; }) => {
@@ -66,6 +68,8 @@ export default function NoteFormCreate() {
         <div className="my-4">
             <Tiptaptoolbar />
             <Tiptap content={formData.content} onEditorChanged={handleInput} />
+            <SelectFolder is_multi={true} title="🏷️ Add Tags" selected_value="" onValueChanged={handleInput} />
+            <SelectFolder is_multi={false} title="📂 Choose Folder Path" selected_value="" onValueChanged={handleInput} />
         </div>
         <div className="flex gap-4">
             <button onClick={showSwal} className="bg-[green] hover:bg-green-600 text-white font-semibold py-3 px-20 shadow-lg transition-all duration-300 cursor-pointer rounded-2xl text-xl">

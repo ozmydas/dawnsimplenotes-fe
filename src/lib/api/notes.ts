@@ -35,8 +35,8 @@ export async function save(note: MyNote) {
             }
         })
         .catch(function (error) {
-            console.log(error);
-            Swal.fire('Oops!', 'Something went wrong.', 'error');
+            console.error(error);
+            Swal.fire('Oops!', 'Something went wrong - ' + error, 'error')
         });
 } // end func
 
@@ -53,7 +53,7 @@ export async function apiNoteGetAll() {
         return response.data.data
     } catch (error) {
         console.error(error)
-        Swal.fire('Oops!', 'Something went wrong.', 'error')
-        return null // or throw error if you want to handle it outside
+        Swal.fire('Oops!', 'Something went wrong - ' + error, 'error')
+        return [] // or throw error if you want to handle it outside
     }
 } // end func

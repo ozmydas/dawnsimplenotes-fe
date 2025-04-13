@@ -6,4 +6,6 @@ export type MyNote = {
     tags?: string[];
     type?: string;
     visibility?: string;
+    path_code?: string;
+    created_at?: String;
 }
