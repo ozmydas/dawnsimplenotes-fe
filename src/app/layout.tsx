@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "@/styles/globals.css";
 import Header from "@/components/Header";
 import hash_token from "@/lib/hasher";
 import MetaClient from "./meta_client";
+import LayoutTransition from "@/components/LayoutTransition";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,14 +44,21 @@ export default async function RootLayout({
           <img src="/images/ItalyClock.jpg" />
         </div>
 
-        <div className="blursed">blurrrr</div>
+        <div className="blursed">.</div>
 
         <div className="main-container">
           <Header />
 
-          {children}
+          <LayoutTransition
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >{children}</LayoutTransition>
+
+          {/* {children} */}
 
         </div>
+        
       </body>
     </html>
   );

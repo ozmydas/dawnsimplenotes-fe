@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import Tiptaptoolbar from "../../components/Tiptaptoolbar";
 import Tiptap from "../../components/Tiptap";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { save } from "@/lib/api/notes";
 import SelectFolder from "./SelectFolder";
 
@@ -14,6 +14,8 @@ export default function NoteFormCreate() {
 
     // const bearState = useBearStore.getState();
 
+    const hasMounted = useRef(false);
+
     /// referensi : https://www.formbackend.com/nextjs-form
     const [formData, setFormData] = useState({
         title: "Your First Title",
@@ -21,15 +23,28 @@ export default function NoteFormCreate() {
         path_code: "",
     })
 
+    useEffect(() => {
+        if (hasMounted.current) return;
+        hasMounted.current = true;
+
+        console.log('app/create Component is mounted')
+
+
+        // Optional cleanup on unmount
+        return () => {
+            console.log('app/create Component is unmounted')
+        }
+    }, [])
+
     const handleInput = (e: { target: { name: any; value: any; }; }) => {
         const fieldName = e.target.name;
         const fieldValue = e.target.value;
-      
+
         setFormData((prevState) => ({
-          ...prevState,
-          [fieldName]: fieldValue
+            ...prevState,
+            [fieldName]: fieldValue
         }));
-      }
+    }
 
     const showSwal = () => {
         withReactContent(Swal).fire({
@@ -45,7 +60,7 @@ export default function NoteFormCreate() {
             if (ok.isConfirmed) {
                 // onSendMessage(formData)
                 // console.log("💡", token)
-                
+
                 Swal.fire('Loading', 'Please wait a sec...', 'info');
                 save(formData)
             }

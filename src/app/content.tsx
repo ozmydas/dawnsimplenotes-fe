@@ -14,13 +14,13 @@ export default function AppContent() {
     const [noteLists, setNoteLists] = useState<MyNote[]>([])
 
     useEffect(() => {
-        console.log('Component is mounted')
+        console.log('app Component is mounted')
 
         loadData();
 
         // Optional cleanup on unmount
         return () => {
-            console.log('Component is unmounted')
+            console.log('app Component is unmounted')
         }
     }, [])
 
