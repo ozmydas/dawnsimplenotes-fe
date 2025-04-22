@@ -52,7 +52,7 @@ export default function AppContent() {
 
                 {/* looping item */}
                 {noteLists.map((note, index) => (
-                    <NoteItem item={note} />
+                    <NoteItem item={note} key={index} />
                 ))}
                 {/* end looping item */}
 

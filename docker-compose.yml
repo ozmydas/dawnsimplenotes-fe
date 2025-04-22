@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  nextapp:
+    container_name: next-damnsimplenotes-container
+    image: next-damnsimplenotes-docker
+    build: .
+    ports:
+      - "3030:3000"
