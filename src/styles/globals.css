@@ -73,6 +73,10 @@ input {
   background: rgba(0, 0, 0, 0.5);
 }
 
+.css-v7duua {
+  background: rgb(246, 215, 210);
+}
+
 .btnTjakep {
   /* border-radius: 30px; */
 }
@@ -144,4 +148,75 @@ input {
 
 .ProseMirror-focused {
   outline: none !important;
+}
+
+.bg-tomato {
+  background: tomato !important;
+}
+
+/*************/
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  overscroll-behavior: contain;
+}
+
+.modal-content {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  top: 10vh;
+  left: 15vw;
+  right: 15vw;
+  bottom: 10vh;
+  border-radius: 30px;
+  padding: 60px 40px;
+  border: 1px solid rgba(255, 99, 71, 0.4);
+  /* box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25); */
+  box-shadow: 0 0 10px rgba(255, 99, 71, 0.2);
+  overflow-y: auto;
+  /* margin: 40px 0; */
+  
+}
+
+.modal-content p {
+  margin: 40px 0;
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.85; /* 175% */
+  margin-bottom: 1.25rem;
+  /* font-family: "Segoe UI", "Roboto", sans-serif; */
+
+  /* Optional extras for appeal */
+  /* max-width: 65ch; Limit line length for better legibility */
+  text-align: left;
+  letter-spacing: 0.5px;
+}
+
+
+/* Applies to WebKit browsers */
+.modal-content::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 99, 71, 0.5); /* tomato with transparency */
+  border-radius: 40px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  border-top: 30px solid transparent; 
+  border-bottom: 30px solid transparent; 
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 99, 71, 1); /* fully opaque on hover */
 }

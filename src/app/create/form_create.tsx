@@ -19,7 +19,9 @@ export default function NoteFormCreate() {
     /// referensi : https://www.formbackend.com/nextjs-form
     const [formData, setFormData] = useState({
         title: "Your First Title",
-        content: "<p>Hello World! 🌎️💨</p>",
+        content: `<h2>Heading</h2>
+        <p style="text-align: center">first paragraph</p>
+        <p style="text-align: right">second paragraph</p>`,
         path_code: "",
     })
 
@@ -81,7 +83,6 @@ export default function NoteFormCreate() {
 
         </div>
         <div className="my-4">
-            <Tiptaptoolbar />
             <Tiptap content={formData.content} onEditorChanged={handleInput} />
             <SelectFolder is_multi={true} title="🏷️ Add Tags" selected_value="" onValueChanged={handleInput} />
             <SelectFolder is_multi={false} title="📂 Choose Folder Path" selected_value="" onValueChanged={handleInput} />

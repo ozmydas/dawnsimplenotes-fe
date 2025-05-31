@@ -20,7 +20,7 @@ export async function save(note: MyNote) {
 
     console.log("🚀 sending post", process.env.NEXT_PUBLIC_API_URL, note, dayjs(new Date()))
 
-    axios.post(url + "/notes", note, {
+    axios.post(url + "/notes/new", note, {
         headers: default_auth_header("0000", token)
     })
         .then(function (response) {
@@ -47,6 +47,23 @@ export async function apiNoteGetAll() {
         const token = bearState.token
 
         const response = await axios.get(url + '/notes', {
+            headers: default_auth_header('0000', token),
+        })
+
+        return response.data.data
+    } catch (error) {
+        console.error(error)
+        Swal.fire('Oops!', 'Something went wrong - ' + error, 'error')
+        return [] // or throw error if you want to handle it outside
+    }
+} // end func
+
+export async function apiNoteGetSingle(code: string) {
+    try {
+        const url = process.env.NEXT_PUBLIC_API_URL ?? ''
+        const token = bearState.token
+
+        const response = await axios.get(url + '/notes/' + code, {
             headers: default_auth_header('0000', token),
         })
 

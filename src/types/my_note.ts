@@ -1,6 +1,7 @@
 "use client"
 
 export type MyNote = {
+    code: string;
     title: string;
     content: string;
     tags?: string[];
